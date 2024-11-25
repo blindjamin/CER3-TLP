@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - EduPlanner{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Bienvenido a EduPlanner</h1>
+    <p>Tu sistema de gestión de eventos y feriados.</p>
+    <a href="{% url 'eventos_lista' %}" class="btn btn-primary">Ver Eventos</a>
+    <a href="{% url 'feriados_lista' %}" class="btn btn-secondary">Ver Feriados</a>
+</div>
+{% endblock %}

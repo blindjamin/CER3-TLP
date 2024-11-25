@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Cambiar Rol{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Cambiar Rol del Usuario</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.role.label_tag }}
+            {{ form.role }}
+        </div>
+        <button type="submit" class="btn btn-success w-100">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'lista_usuarios' %}" class="btn btn-secondary mt-3">Volver</a>
+</div>
+{% endblock %}

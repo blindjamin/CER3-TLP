@@ -1,7 +1,6 @@
 pycache/
 *.pyc
 *.pyo
-*.sqlite3
 venv/
 *.log
 .env
