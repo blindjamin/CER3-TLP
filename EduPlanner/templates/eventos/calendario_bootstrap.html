@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Calendario{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Selecciona una Fecha</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="GET" action="{% url 'calendario' %}">
+                <div class="form-group">
+                    <label for="datepicker">Elige una fecha:</label>
+                    <input type="text" id="datepicker" name="date" class="form-control" placeholder="Selecciona una fecha">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2>Eventos</h2>
+    {% if eventos %}
+    <ul class="list-group">
+        {% for evento in eventos %}
+        <li class="list-group-item">
+            <strong>{{ evento.title }}</strong> - {{ evento.start_date }} al {{ evento.end_date }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No hay eventos para esta fecha.</p>
+    {% endif %}
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
+</script>
+{% endblock %}

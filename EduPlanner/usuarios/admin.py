@@ -8,7 +8,6 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('role', 'is_staff', 'is_superuser')
     search_fields = ('username', 'email')
 
-@admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'status', 'start_date', 'end_date', 'created_by')
     list_filter = ('type', 'status')
