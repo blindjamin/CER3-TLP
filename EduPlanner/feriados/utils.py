@@ -14,7 +14,7 @@ def obtener_feriados(api_key, country="CL", year="2024"):
     """
     url = "https://calendarific.com/api/v2/holidays"
     params = {
-        "api_key": api_key,  # Asegúrate de que la clave esté entre comillas
+        "api_key": api_key, 
         "country": country,
         "year": year,
     }
@@ -23,7 +23,7 @@ def obtener_feriados(api_key, country="CL", year="2024"):
     try:
         response = requests.get(url, params=params)
         print(f"Código de estado: {response.status_code}")
-        response.raise_for_status()  # Lanza una excepción si la respuesta es un error HTTP
+        response.raise_for_status() 
         data = response.json()
         holidays = data.get("response", {}).get("holidays", [])
         print(f"Feriados obtenidos: {len(holidays)}")
@@ -49,10 +49,10 @@ def guardar_feriados(feriados):
     for feriado in feriados:
         try:
             iso_date = feriado["date"]["iso"]
-            date = iso_date.split("T")[0]  # Extrae solo la parte de la fecha (YYYY-MM-DD)
-            region = feriado.get("locations", "Nacional")  # Obtiene la región o usa 'Nacional' como valor predeterminado
+            date = iso_date.split("T")[0] 
+            region = feriado.get("locations", "Nacional") 
 
-            # Guarda o actualiza el feriado en la base de datos
+            
             obj, created = Feriado.objects.get_or_create(
                 name=feriado["name"],
                 date=date,
@@ -72,7 +72,7 @@ def actualizar_feriados():
     """
     Función principal para obtener y guardar los feriados desde la API externa.
     """
-    api_key = "4dlrihgSzDp6to2fNCTTHftITbijBu4c"  # Clave API correctamente delimitada
+    api_key = "4dlrihgSzDp6to2fNCTTHftITbijBu4c"  
     feriados = obtener_feriados(api_key)
     if feriados:
         guardar_feriados(feriados)

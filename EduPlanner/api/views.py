@@ -21,7 +21,7 @@ class EventoListCreateAPIView(APIView):
     def post(self, request):
         serializer = EventoSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(created_by=request.user)  # Asigna el usuario como creador
+            serializer.save(created_by=request.user)  
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

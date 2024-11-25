@@ -28,7 +28,7 @@ class ListaEventosView(ListView):
     context_object_name = 'eventos'
 
     def get_queryset(self):
-        tipo = self.request.GET.get('tipo')  # Filtra por tipo si se proporciona
+        tipo = self.request.GET.get('tipo')  
         queryset = super().get_queryset()
         if tipo:
             queryset = queryset.filter(type=tipo)
@@ -97,7 +97,7 @@ class EliminarEventoView(AdministradorRequeridoMixin, DeleteView):
 
 
 # Vista para el calendario consolidado
-class VistaCalendarioConsolidado(TemplateView):
+#class VistaCalendarioConsolidado(TemplateView):
     template_name = 'eventos/calendario_bootstrap.html'
 
     def get_context_data(self, **kwargs):

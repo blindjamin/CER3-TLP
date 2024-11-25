@@ -11,12 +11,11 @@ class RegistroForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Establece el valor predeterminado para el rol como "estudiante"
         self.instance.role = 'student'
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password'])  # Encripta la contraseña
+        user.set_password(self.cleaned_data['password'])  
         if commit:
             user.save()
         return user

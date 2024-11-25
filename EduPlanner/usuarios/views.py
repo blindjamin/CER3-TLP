@@ -27,8 +27,8 @@ def registro(request):
         form = RegistroForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Inicia sesión automáticamente
-            return redirect('home')  # Redirige a la página de inicio
+            login(request, user)  
+            return redirect('home')  
         else:
             return render(request, 'usuarios/registro.html', {'form': form, 'errors': form.errors})
     form = RegistroForm()
@@ -83,7 +83,7 @@ class CambiarRolView(UpdateView):
     model = User
     fields = ['role']
     template_name = 'usuarios/cambiar_rol.html'
-    success_url = reverse_lazy('lista_usuarios')  # Ajusta esta URL según tu proyecto
+    success_url = reverse_lazy('lista_usuarios')  
 
     def form_valid(self, form):
         form.save()
