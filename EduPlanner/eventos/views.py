@@ -97,7 +97,7 @@ class EliminarEventoView(AdministradorRequeridoMixin, DeleteView):
 
 
 # Vista para el calendario consolidado
-#class VistaCalendarioConsolidado(TemplateView):
+class VistaCalendarioConsolidado(TemplateView):
     template_name = 'eventos/calendario_bootstrap.html'
 
     def get_context_data(self, **kwargs):
@@ -115,6 +115,7 @@ class EliminarEventoView(AdministradorRequeridoMixin, DeleteView):
 
         context['calendario'] = calendario
         return context
+    
 
 
 # Registrar Evento en el admin
